@@ -45,10 +45,7 @@ https://github.com/danielroich/PTI
 在运行前需进行如下修改与设置：
 
 1. 将 `training/coaches/single_id_coach.py` 替换为 `PTI/single_id_coach.py` 中对应的实现；
-2. 在 PTI 根目录下执行：
-   ```bash
-   python PTI/run_pti_dataset.py
-   ```
+2. 在 PTI 根目录下运行 `PTI/run_pti_dataset.py`
 
 ## 定量评估
 
@@ -61,11 +58,7 @@ https://github.com/danielroich/PTI
 评估过程依赖 **DIFT** 特征提取工具，其代码可从以下仓库下载：  
 https://github.com/Tsingularity/dift
 
-完成依赖配置后，在项目根目录下运行：
-
-```bash
-python evaluation/evaluation.py
-```
+完成依赖配置后，在项目根目录下运行 `evaluation/evaluation.py`
 
 即可获得对应的定量评估结果。
 
