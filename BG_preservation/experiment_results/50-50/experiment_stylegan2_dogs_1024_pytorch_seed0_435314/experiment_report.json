@@ -1,0 +1,56 @@
+{
+  "metrics": {
+    "external_pixel_change": 144.114842376117,
+    "inside_mask_movement_ratio": 0.47357133084226916,
+    "inside_mask_points": [
+      {
+        "point_key": "0",
+        "initial_distance": 219.31256233968907,
+        "final_distance": 11.661903789690601,
+        "movement_ratio": 0.946825190197597
+      },
+      {
+        "point_key": "1",
+        "initial_distance": 28.861739379323623,
+        "final_distance": 30.675723300355934,
+        "movement_ratio": -0.06285081772763279
+      },
+      {
+        "point_key": "2",
+        "initial_distance": 31.04834939252005,
+        "final_distance": 7.211102550927978,
+        "movement_ratio": 0.7677460254081904
+      },
+      {
+        "point_key": "3",
+        "initial_distance": 25.0,
+        "final_distance": 18.681541692269406,
+        "movement_ratio": 0.2527383323092238
+      },
+      {
+        "point_key": "4",
+        "initial_distance": 31.016124838541646,
+        "final_distance": 16.64331697709324,
+        "movement_ratio": 0.4633979240239673
+      }
+    ],
+    "outside_mask_movement_ratio": 0.01208724794717192,
+    "outside_mask_points": [
+      {
+        "point_key": "5",
+        "initial_distance": 224.95555116511352,
+        "final_distance": 219.85677155821242,
+        "movement_ratio": 0.02266572031893843
+      },
+      {
+        "point_key": "6",
+        "initial_distance": 158.76082640248507,
+        "final_distance": 158.52129194527782,
+        "movement_ratio": 0.0015087755754054077
+      }
+    ]
+  },
+  "total_steps": 201,
+  "blend_interval": 50,
+  "reproject_steps": 50
+}

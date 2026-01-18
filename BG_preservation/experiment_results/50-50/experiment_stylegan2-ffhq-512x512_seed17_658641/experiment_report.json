@@ -1,0 +1,74 @@
+{
+  "metrics": {
+    "external_pixel_change": 202.47484566738657,
+    "inside_mask_movement_ratio": 0.38724030238270774,
+    "inside_mask_points": [
+      {
+        "point_key": "0",
+        "initial_distance": 32.0624390837628,
+        "final_distance": 27.892651361962706,
+        "movement_ratio": 0.1300521058584022
+      },
+      {
+        "point_key": "1",
+        "initial_distance": 33.015148038438355,
+        "final_distance": 7.0,
+        "movement_ratio": 0.787976113514616
+      },
+      {
+        "point_key": "2",
+        "initial_distance": 29.0,
+        "final_distance": 10.295630140987,
+        "movement_ratio": 0.6449782710004482
+      },
+      {
+        "point_key": "3",
+        "initial_distance": 31.89043743820395,
+        "final_distance": 17.0,
+        "movement_ratio": 0.4669248412492949
+      },
+      {
+        "point_key": "4",
+        "initial_distance": 22.80350850198276,
+        "final_distance": 17.804493814764857,
+        "movement_ratio": 0.21922129600290408
+      },
+      {
+        "point_key": "5",
+        "initial_distance": 37.57658845611187,
+        "final_distance": 34.785054261852174,
+        "movement_ratio": 0.07428918667058104
+      }
+    ],
+    "outside_mask_movement_ratio": 0.07183573085119299,
+    "outside_mask_points": [
+      {
+        "point_key": "6",
+        "initial_distance": 14.142135623730951,
+        "final_distance": 11.704699910719626,
+        "movement_ratio": 0.17235273213765756
+      },
+      {
+        "point_key": "7",
+        "initial_distance": 13.416407864998739,
+        "final_distance": 13.892443989449804,
+        "movement_ratio": -0.035481637800604426
+      },
+      {
+        "point_key": "8",
+        "initial_distance": 14.560219778561036,
+        "final_distance": 12.36931687685298,
+        "movement_ratio": 0.15047182906771883
+      },
+      {
+        "point_key": "9",
+        "initial_distance": 13.0,
+        "final_distance": 13.0,
+        "movement_ratio": 0.0
+      }
+    ]
+  },
+  "total_steps": 201,
+  "blend_interval": 50,
+  "reproject_steps": 50
+}
