@@ -1,63 +1,19 @@
-<p align="center">
+# DragGAN 背景保持优化研究
 
-  <h1 align="center">Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold</h1>
-  <p align="center">
-    <a href="https://xingangpan.github.io/"><strong>Xingang Pan</strong></a>
-    ·
-    <a href="https://ayushtewari.com/"><strong>Ayush Tewari</strong></a>
-    ·
-    <a href="https://people.mpi-inf.mpg.de/~tleimkue/"><strong>Thomas Leimkühler</strong></a>
-    ·
-    <a href="https://lingjie0206.github.io/"><strong>Lingjie Liu</strong></a>
-    ·
-    <a href="https://www.meka.page/"><strong>Abhimitra Meka</strong></a>
-    ·
-    <a href="http://www.mpi-inf.mpg.de/~theobalt/"><strong>Christian Theobalt</strong></a>
-  </p>
-  <h2 align="center">SIGGRAPH 2023 Conference Proceedings</h2>
-  <div align="center">
-    <img src="DragGAN.gif", width="600">
-  </div>
+本项目提供了一个基于 GragGAN 的背景保持能力增强的可视化交互界面，支持用户通过交互式操作进行图像编辑，并可精细控制背景保持程度。此外，项目允许用户自定义创建、保存实验数据集。基于已创建的数据集，项目支持参数化实验配置，可调节优化参数，自动保存中间实验图像及实验数据。
+## 环境要求
 
-  <p align="center">
-  <br>
-    <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
-    <a href="https://twitter.com/XingangP"><img alt='Twitter' src="https://img.shields.io/twitter/follow/XingangP?label=%40XingangP"></a>
-    <a href="https://arxiv.org/abs/2305.10973">
-      <img src='https://img.shields.io/badge/Paper-PDF-green?style=for-the-badge&logo=adobeacrobatreader&logoWidth=20&logoColor=white&labelColor=66cc00&color=94DD15' alt='Paper PDF'>
-    </a>
-    <a href='https://vcai.mpi-inf.mpg.de/projects/DragGAN/'>
-      <img src='https://img.shields.io/badge/DragGAN-Page-orange?style=for-the-badge&logo=Google%20chrome&logoColor=white&labelColor=D35400' alt='Project Page'></a>
-    <a href="https://colab.research.google.com/drive/1mey-IXPwQC_qSthI5hO-LTX7QL4ivtPh?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
-  </p>
-</p>
+若您拥有支持 CUDA 的显卡，请遵循 [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements) 的官方要求。
 
-## Web Demos
-
-[![Open in OpenXLab](https://cdn-static.openxlab.org.cn/app-center/openxlab_app.svg)](https://openxlab.org.cn/apps/detail/XingangPan/DragGAN)
-
-<p align="left">
-  <a href="https://huggingface.co/spaces/radames/DragGan"><img alt="Huggingface" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DragGAN-orange"></a>
-</p>
-
-## Requirements
-
-If you have CUDA graphic card, please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).  
-
-The usual installation steps involve the following commands, they should set up the correct CUDA version and all the python packages
+通常的安装步骤如下，这些命令将设置正确的 CUDA 版本并安装所有 Python 依赖包：  
 
 ```
 conda env create -f environment.yml
 conda activate stylegan3
-```
-
-Then install the additional requirements
-
-```
 pip install -r requirements.txt
 ```
 
-Otherwise (for GPU acceleration on MacOS with Silicon Mac M1/M2, or just CPU) try the following:
+若不使用 NVIDIA CUDA（例如在 macOS Silicon M1/M2 上使用 GPU 加速，或仅使用 CPU），请尝试以下步骤：
 
 ```sh
 cat environment.yml | \
@@ -69,70 +25,81 @@ conda activate stylegan3
 export PYTORCH_ENABLE_MPS_FALLBACK=1
 ```
 
-## Run Gradio visualizer in Docker 
+## 在 Docker 中运行 Gradio 可视化工具
 
-Provided docker image is based on NGC PyTorch repository. To quickly try out visualizer in Docker, run the following:  
+提供的 Docker 镜像基于 NGC PyTorch 仓库构建。若需在 Docker 容器中快速体验可视化工具，请运行以下命令：
 
 ```sh
-# before you build the docker container, make sure you have cloned this repo, and downloaded the pretrained model by `python scripts/download_model.py`.
 docker build . -t draggan:latest  
+
 docker run -p 7860:7860 -v "$PWD":/workspace/src -it draggan:latest bash
-# (Use GPU)if you want to utilize your Nvidia gpu to accelerate in docker, please add command tag `--gpus all`, like:
-#   docker run --gpus all  -p 7860:7860 -v "$PWD":/workspace/src -it draggan:latest bash
 
 cd src && python visualizer_drag_gradio.py --listen
 ```
-Now you can open a shared link from Gradio (printed in the terminal console).   
-Beware the Docker image takes about 25GB of disk space!
 
-## Download pre-trained StyleGAN2 weights
-
-To download pre-trained weights, simply run:
+## 下载预训练 StyleGAN2 权重
 
 ```
 python scripts/download_model.py
 ```
-If you want to try StyleGAN-Human and the Landscapes HQ (LHQ) dataset, please download weights from these links: [StyleGAN-Human](https://drive.google.com/file/d/1dlFEHbu-WzQWJl7nBBZYcTyo000H9hVm/view?usp=sharing), [LHQ](https://drive.google.com/file/d/16twEf0T9QINAEoMsWefoWiyhcTd-aiWc/view?usp=sharing), and put them under `./checkpoints`.
 
-Feel free to try other pretrained StyleGAN.
 
-## Run DragGAN GUI
-
-To start the DragGAN GUI, simply run:
-```sh
-sh scripts/gui.sh
-```
-If you are using windows, you can run:
-```
-.\scripts\gui.bat
-```
-
-This GUI supports editing GAN-generated images. To edit a real image, you need to first perform GAN inversion using tools like [PTI](https://github.com/danielroich/PTI). Then load the new latent code and model weights to the GUI.
-
-You can run DragGAN Gradio demo as well, this is universal for both windows and linux:
-```sh
+## 使用方法
+### 运行 DragGAN Gradio 交互界面
+```bash
 python visualizer_drag_gradio.py
 ```
+在可视化界面可以通过调整 Blend Interval (N) 和 Reproject Steps (M) 参数，来控制优化过程中特征融合的频率与强度
 
-## Acknowledgement
+### 基于已有数据的参数化实验
+```bash
+# 对单个实验数据进行实验
+python run_experiment.py -e experiment_stylegan2-ffhq-512x512_seed7_421929.json -b 50 -r 0 ./experiment_results/50-0
 
-This code is developed based on [StyleGAN3](https://github.com/NVlabs/stylegan3). Part of the code is borrowed from [StyleGAN-Human](https://github.com/stylegan-human/StyleGAN-Human).
-
-(cheers to the community as well)
-## License
-
-The code related to the DragGAN algorithm is licensed under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
-However, most of this project are available under a separate license terms: all codes used or modified from [StyleGAN3](https://github.com/NVlabs/stylegan3) is under the [Nvidia Source Code License](https://github.com/NVlabs/stylegan3/blob/main/LICENSE.txt).
-
-Any form of use and derivative of this code must preserve the watermarking functionality showing "AI Generated".
-
-## BibTeX
-
-```bibtex
-@inproceedings{pan2023draggan,
-    title={Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold},
-    author={Pan, Xingang and Tewari, Ayush, and Leimk{\"u}hler, Thomas and Liu, Lingjie and Meka, Abhimitra and Theobalt, Christian},
-    booktitle = {ACM SIGGRAPH 2023 Conference Proceedings},
-    year={2023}
-}
+# 对指定目录下所有实验数据进行实验
+python run_experiment.py -b 50 -r 50 ./experiment_results/50-50
 ```
+运行实验脚本时，可配置以下参数：
+1. `--experiment-data-dir / -d` 实验数据目录
+   
+   该目录存放实验所需的 JSON 配置文件，默认值：./experiment_data
+
+2. `--experiment / -e` 指定实验数据文件
+   
+   默认值：运行实验数据目录中的所有实验
+
+3. `--steps / -s` 总优化步数
+   
+   默认值：201
+
+4. `--save-interval / -i` 
+   
+   每隔 N 步保存一次未标注图像和标注图像，默认值：50
+
+5. `--blend-interval / -b` 设置特征融合操作的频率
+   
+   默认值：50 步执行一次融合
+
+6. `--reproject-steps / -r` 控制每次反演优化的步数
+   
+   默认值：25
+
+7. 位置参数 `output_base_dir` 实验结果的输出目录
+   
+   命名通常为 ./experiment_results/{blend_interval}-{reproject_steps}
+   
+每次执行特征融合与重投影（GAN 反演）阶段时，都会生成三张对应的可视化图像：`before blend`, `after blend`, and `after reprojection`。这些图像将保存在 `blend_visualization` 文件夹中，同时标注图像和未标注图像也会保存在指定的输出目录中。
+
+### 创建自定义实验数据
+```bash
+# 请确保已运行过 DragGAN Gradio 交互界面
+python create_data.py
+```
+您可以在可视化界面中自定义操作点和可编辑区域，并将其保存为一组实验数据。每组数据将包含原始图像、操作点位置以及掩码区域的信息。
+
+创建的数据将保存在 `experiment_data` 文件夹中，可供后续实验使用。
+
+## 致谢
+
+我们的代码建立在 [DragGAN](https://github.com/XingangPan/DragGAN/) 基础上。
+
